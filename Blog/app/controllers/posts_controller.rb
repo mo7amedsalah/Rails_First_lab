@@ -10,6 +10,9 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+#   params.require(:comment).permit()
+    @comment = Comment.new()
+    @comments = @post.comments.order("created_at DESC")
   end
 
   # GET /posts/new
@@ -71,4 +74,5 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :body, :user_id)
     end
+
 end
